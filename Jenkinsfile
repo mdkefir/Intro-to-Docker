@@ -10,15 +10,7 @@ pipeline {
 
     // Определяем этапы (стадии) конвейера
     stages {
-        stage('1. Checkout Code') {
-            steps {
-                // Скачиваем последнюю версию кода из нашего репозитория на GitHub
-                echo 'Cloning the repository...'
-                git 'https://github.com/mdkefir/Intro-to-Docker.git'
-            }
-        }
-
-        stage('2. Build Docker Image') {
+        stage('1. Build Docker Image') {
             steps {
                 // Собираем Docker образ. ${BUILD_NUMBER} - это встроенная переменная Jenkins (1, 2, 3...)
                 // Это создает уникальный тег для каждой сборки: myuser/lab2-app:1, myuser/lab2-app:2 и т.д.
@@ -29,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('3. Push Docker Image to Docker Hub') {
+        stage('2. Push Docker Image to Docker Hub') {
             steps {
                 // Загружаем собранный образ в репозиторий Docker Hub
                 echo "Pushing Docker image to Docker Hub..."
@@ -45,7 +37,7 @@ pipeline {
             }
         }
 
-        stage('4. Deploy Application') {
+        stage('3. Deploy Application') {
             steps {
                 // Разворачиваем приложение, используя docker-compose
                 echo 'Deploying application...'
