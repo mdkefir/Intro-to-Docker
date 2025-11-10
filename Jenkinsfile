@@ -42,10 +42,10 @@ pipeline {
                 // Разворачиваем приложение, используя docker-compose
                 echo 'Deploying application...'
                 // Сначала останавливаем и удаляем старые контейнеры, если они есть
-                sh "docker-compose down"
+                bat "docker-compose down"
                 // Запускаем новые. 'docker-compose up' автоматически скачает ('pull')
                 // образ с тегом 'latest' из Docker Hub, который мы только что запушили.
-                sh "docker-compose up -d"
+                bat "docker-compose up -d"
                 echo 'Deployment complete! Application should be running on http://localhost:5000'
             }
         }
