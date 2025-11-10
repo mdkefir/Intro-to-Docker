@@ -6,6 +6,8 @@ services:
 
   # Первый сервис - наше веб-приложение
   app:
+    image: mdkefir/intro-to-docker:latest
+
     # Указываем, что Docker-образ для этого сервиса нужно собрать
     # из папки ./app (где лежит наш Dockerfile)
     build: ./app
